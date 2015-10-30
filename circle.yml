@@ -1,14 +1,13 @@
 test:
   override:
-    - xctool
-      -reporter pretty
-      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
-      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
-      CODE_SIGNING_REQUIRED=NO
-      CODE_SIGN_IDENTITY=
-      PROVISIONING_PROFILE=
-      -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
-      -sdk iphonesimulator
-      -project "iOS9Sampler.xcodeproj"
-      -scheme "iOS9Sampler"
-      build build-tests run-tests
+    - set -o pipefail &&
+      xcodebuild
+        CODE_SIGNING_REQUIRED=NO
+        CODE_SIGN_IDENTITY=
+        PROVISIONING_PROFILE=
+        -sdk iphonesimulator
+        -destination 'platform=iOS Simulator,OS=8.1,name=iPhone 6'
+        -scheme "iOS9Sampler"
+        clean build test |
+      tee $CIRCLE_ARTIFACTS/xcode_raw.log |
+      xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
