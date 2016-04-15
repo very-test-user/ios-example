@@ -1,8 +1,5 @@
 machine:
   xcode:
     version: "7.3"
-
-dependencies:
-  pre:
-    - sudo rm $(which xctool)
-    - brew update && brew upgrade xctool
+  environment:
+    XCODE_WORKSPACE: "iOS9Sampler.xcworkspace"
