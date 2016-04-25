@@ -9,8 +9,8 @@ test:
     - set -o pipefail &&
       xcodebuild
         CODE_SIGNING_REQUIRED=NO # no need to do code signing at this point
-        CODE_SIGN_IDENTITY=''
-        PROVISIONING_PROFILE=''
+        CODE_SIGN_IDENTITY=
+        PROVISIONING_PROFILE=
         -sdk iphonesimulator
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         -workspace project.xcworkspace
