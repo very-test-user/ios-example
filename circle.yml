@@ -14,7 +14,7 @@ test:
         -sdk iphonesimulator
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         -workspace iOS9Sampler.xcworkspace
-        -scheme "iOS 9 Sampler"
+        -scheme "iOS9Sampler"
         clean build test |
       tee $CIRCLE_ARTIFACTS/xcode_raw.log |
       xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
