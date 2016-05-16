@@ -13,7 +13,7 @@ test:
         PROVISIONING_PROFILE=
         -sdk iphonesimulator
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
-        -workspace project.xcworkspace
+        -workspace iOS9Sampler.xcworkspace
         -scheme "iOS 9 Sampler"
         clean build test |
       tee $CIRCLE_ARTIFACTS/xcode_raw.log |
